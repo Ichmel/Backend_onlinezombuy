@@ -13,7 +13,6 @@ export default {
         console.log(req.file)
         try {
             const { categoryId, typeId, categorieId, nomprod,prixF, prix, ancienprix, qty, nomF,adresseF, contactF, localF, description, engros } = req.body;
-            
             db.Produit.create({
                             categoryId: categoryId,
                             subCategoryId: typeId,
@@ -30,8 +29,9 @@ export default {
                             description: description,
                             engros: parseInt(engros) ? 'oui' : 'non',
                             photo: req.file ? req.file.location : '',
-                        })
-                 
+                       
+                   
+                })
                 .then(product => {
                     res.status(200).json({ 'success': true, msg: "Successfully inserted product" });
                 })
